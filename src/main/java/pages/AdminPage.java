@@ -12,4 +12,8 @@ public class AdminPage extends BasePage{
         click(ele);
         return new UserManagementPage(driver);
     }
+    public UserManagementPage clickAddTest(By ele){
+        click(ele);
+        return new UserManagementPage(driver);
+    }
 }
