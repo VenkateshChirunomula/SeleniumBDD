@@ -8,15 +8,13 @@ import utils.FilePaths;
 import utils.ObjectRepo;
 import utils.PropertyFileReader;
 
-public class TC_002 extends BaseTest {
+public class TC_002 extends TC_001 {
 
 
-    @Test
+    @Test (dependsOnMethods = {"loginTest"})
     public void validateAdmin() {
-        lp.enterUsername(ObjectRepo.LoginPage.userNameField, PropertyFileReader.getValueFromFile(FilePaths.getEnvdata(), "Username"))
-                .enterPassword(ObjectRepo.LoginPage.passwordField, PropertyFileReader.getValueFromFile(FilePaths.getEnvdata(), "Password"))
-                .clickLogin(ObjectRepo.LoginPage.buttonLogin)
-                .clickAdminLink(ObjectRepo.HomePage.linkAdmin)
+
+                homePage.clickAdminLink(ObjectRepo.HomePage.linkAdmin)
                 .clickAdd(ObjectRepo.AdminPage.buttonAdd);
         Assert.assertEquals("Sai", "sai");
     }

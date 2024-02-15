@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,6 +40,21 @@ public class BasePage {
     public static void waitForElement(By ele){
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+    }
+    public static void wait(int timeout){
+       try{
+           Thread.sleep(timeout*1000);
+       }catch (Exception e){}
+    }
+
+    public static void waitForPageLoad(){
+        JavascriptExecutor js = (JavascriptExecutor)getDriver();
+        String loadState = js.executeScript("return document.readyState;").toString();
+        while(loadState.contains("complete")){
+            wait(5);
+            break;
+        }
+
     }
 
     public static void getPageName(){

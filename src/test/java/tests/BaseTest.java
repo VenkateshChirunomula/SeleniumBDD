@@ -1,10 +1,7 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import pages.AdminPage;
 import pages.BasePage;
@@ -32,6 +29,10 @@ public class BaseTest {
     public void tearDown(){
         BasePage.closeBrowser();
         Assert.assertAll();
+    }
+    @AfterTest
+    public void logoutTest(){
+        homePage.userLogout();
     }
 
 }
