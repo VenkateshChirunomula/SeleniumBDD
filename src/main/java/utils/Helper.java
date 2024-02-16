@@ -19,6 +19,12 @@ public class Helper {
      FileUtils.copyFile(scr, new File(".//reports//image" + new Date().getTime() + ".png"));
         }catch (Exception e){
      System.err.println(e.getMessage());
+        }
     }
+
+    public static String getBase64String(){
+        TakesScreenshot screenshot = (TakesScreenshot) BasePage.getDriver();
+        String scr = screenshot.getScreenshotAs(OutputType.BASE64);
+        return scr;
     }
 }

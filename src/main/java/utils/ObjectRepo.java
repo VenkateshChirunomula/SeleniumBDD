@@ -6,7 +6,7 @@ public class ObjectRepo {
 
     public static class LoginPage{
         public static final By userNameField= By.xpath("//*[@name='username']");
-        public static final By passwordField= By.xpath("//*[@name='password']");
+        public static final By passwordField= By.xpath("//*[@name='passwor']");
         public static final By buttonLogin = By.xpath("//button[@type='submit']");
     }
     public static class HomePage{
